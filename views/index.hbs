@@ -1,2 +1,10 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+<form action="/get-data" method="get">
+    <label for="phrase"> Enter a phrase: </label>
+    <input type="text" id="phrase" name="phrase"/>
+    <button type="submit">Enter</button>
+</form>
+
+<p>Your previous statement was {{sentiment}}.</p>
