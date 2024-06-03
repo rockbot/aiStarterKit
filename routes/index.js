@@ -1,5 +1,5 @@
-var express = require('express'),
-    Sentiment = require('sentiment');
+import express from 'express';
+import Sentiment from 'sentiment';
 
 var router = express.Router(),
     sentiment = new Sentiment();
@@ -19,4 +19,5 @@ router.get('/get-data', function(req,res,next) {
   res.render('index', { title: 'Sentiment Analyzer ', sentiment: sentimentResult }) 
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

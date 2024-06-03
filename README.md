@@ -15,3 +15,7 @@ Feedback (of the actionable and/or complimentary sort) is welcome - create an is
 * I added a basic form on the homepage to get a user-generated phrase, and then have the form handler go to the same index html (even if it's not the actual homepage) to see `sentiment`'s analysis.
 * It's ugly AF, but my mantra has always been to make it work, then make it pretty, and _then_ make it fast. We're fully in the make it work phase.
 
+### Updated the entire app to use ES6 modules
+* I'd like to upgrade to using Hugging Face's modules - but they're ES6-based, which means I have to give up the CommonJS method of requiring modules that I'm used to.
+* I've also fixed whatever issues currently exist in the codebase (per `npm audit`)
+
