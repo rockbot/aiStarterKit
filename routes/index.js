@@ -1,8 +1,9 @@
 import express from 'express';
-import Sentiment from 'sentiment';
+import { HfInference } from '@huggingface/inference';
+import "dotenv/config";
 
-var router = express.Router(),
-    sentiment = new Sentiment();
+const router = express.Router(),
+      hf = new HfInference(process.env.HF_ACCESS);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,13 +11,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/get-data', function(req,res,next) {
-  console.log(req.query);
+  const phrase = req.query.phrase;
 
-  var result = sentiment.analyze(req.query.phrase);
-  console.log(result);
-
-  var sentimentResult = result.score > 0 ? "positive" : "negative";
-  res.render('index', { title: 'Sentiment Analyzer ', sentiment: sentimentResult }) 
+  hf.textClassification({
+    model: "distilbert-base-uncased-finetuned-sst-2-english",
+    inputs: phrase
+  }).then(result => {
+    res.render('index', { 
+      title: 'Sentiment Analyzer ', 
+      phrase: phrase, 
+      sentiment: result[0].label 
+    })
+  }).catch(err => {
+    console.error(err)
+  })
 });
 
 // module.exports = router;

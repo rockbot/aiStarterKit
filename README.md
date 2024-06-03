@@ -6,16 +6,19 @@ I've started playing around a little bit, but I realize there are maybe a lot of
 
 Feedback (of the actionable and/or complimentary sort) is welcome - create an issue or send me an email at raquel@rckbt.me. 
 
+I am well aware that this app is supremely ugly right now, but my mantra has always been to make it work, then make it pretty, and _then_ make it fast. We're fully in the make it work phase.
+
 ## What I've done so far
 
 ### Used `express-generator` to build a very barebones express application
 * I decided to use handlebars for the views, because it's a bit easier for folks who are familiar with html to step right in (as compared to pug, which is _just_ dissonant enough to be confusing).
 
 ### Added the `sentiment` module to get started with basic sentiment analysis
-* I added a basic form on the homepage to get a user-generated phrase, and then have the form handler go to the same index html (even if it's not the actual homepage) to see `sentiment`'s analysis.
-* It's ugly AF, but my mantra has always been to make it work, then make it pretty, and _then_ make it fast. We're fully in the make it work phase.
+* ~~I added a basic form on the homepage to get a user-generated phrase, and then have the form handler go to the same index html (even if it's not the actual homepage) to see `sentiment`'s analysis.~~
+
+### Moved from `sentiment` to use Hugging Face for their vast library of transformers and models
+* `sentiment` is great for getting started, but I don't want to have to hunt for models AND modules - using the HF inferences module means I can just focus on which transformer/model to use.
 
 ### Updated the entire app to use ES6 modules
-* I'd like to upgrade to using Hugging Face's modules - but they're ES6-based, which means I have to give up the CommonJS method of requiring modules that I'm used to.
+* Hugging Face's modules are ES6-based, which means I have to give up the CommonJS method of requiring modules that I'm used to.
 * I've also fixed whatever issues currently exist in the codebase (per `npm audit`)
-

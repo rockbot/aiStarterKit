@@ -7,4 +7,6 @@
     <button type="submit">Enter</button>
 </form>
 
-<p>Your previous statement was {{sentiment}}.</p>
+{{#if phrase}} 
+<p>"{{phrase}}" is {{sentiment}}.</p>
+{{/if}}
